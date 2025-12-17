@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback</title>
+</head>
+<body>
+    <h1>Feedback de tu respuesta</h1>
+    <p>Pregunta: {{ feedback.pregunta }}</p>
+    <p>Tu respuesta: {{ feedback.resp_usuario }}</p>
+    {% if feedback.es_correcta %}
+        <p style="color: green;">¡Correcta!</p>
+    {% else %}
+        <p style="color: red;">Incorrecta. La respuesta correcta es: {{ feedback.correcta }}</p>
+    {% endif %}
+    
+<form action="{% if last %}/resumen{% else %}/pregunta{% endif %}" method="get">
+    <button type="submit">
+        {% if last %}Ver resumen{% else %}Siguiente pregunta{% endif %}
+    </button>
+</form>
+</body>
+</html>

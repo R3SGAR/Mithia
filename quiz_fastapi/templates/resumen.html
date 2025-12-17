@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen</title>
+</head>
+<body>
+    <h1>Resumen del Quiz</h1>
+    <ul>
+        {% for preg, resp, corr, stat in respuestas %}
+            <li>{{ preg }} | Tu respuesta: {{ resp }} | Correcta: {{ corr }} | {{ stat }}</li>
+        {% endfor %}
+    </ul>
+    <p>Porcentaje de acierto: {{ porcentaje|round(2) }}%</p>
+    <a href="/">Volver a empezar</a>
+    <h2>Progreso Histórico</h2>
+{% if progreso %}
+    <ul>
+        {% for fecha, porc in progreso %}
+            <li>{{ fecha }}: {{ porc|round(2) }}%</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay sesiones previas.</p>
+{% endif %}
+</body>
+</html>
