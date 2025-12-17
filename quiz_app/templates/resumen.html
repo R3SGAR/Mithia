@@ -13,5 +13,15 @@
     </ul>
     <p>Porcentaje de acierto: {{ porcentaje|round(2) }}%</p>
     <a href="/">Volver a empezar</a>
+    <h2>Progreso Histórico</h2>
+{% if progreso %}
+    <ul>
+        {% for fecha, porc in progreso %}
+            <li>{{ fecha }}: {{ porc|round(2) }}%</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay sesiones previas.</p>
+{% endif %}
 </body>
 </html>
